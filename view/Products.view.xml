@@ -1,0 +1,149 @@
+<mvc:View controllerName="com.sap.manageproducts.controller.Products"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid">
+    <Page id="page" title="{i18n>title}">
+        
+        <content>
+            <Toolbar>
+            <Label text="Add Product" id="l0" class="largeLabel"/>
+            </Toolbar>
+            <FlexBox justifyContent="End">
+            <VBox>
+            <HBox justifyContent="End" class="line">
+                <Label text="Product ID:" id="l1" />
+                <Input
+                    value=""
+                    id="ProductId"
+                    width="1000px"
+                />
+            </HBox>
+            <HBox justifyContent="End" class="line">
+                <Label text="Product Name:" id="l2" />
+                <Input
+                    value=""
+                    id="ProductNameId"
+                    width="1000px"
+                />
+            </HBox>
+            <HBox justifyContent="End" class="line">
+                <Label text="Supplier Name:" id="l3" />
+                <Input
+                    value=""
+                    id="SupplierNameId"
+                    width="1000px"
+                />
+            </HBox>
+            <HBox justifyContent="End" class="line">
+                <Label text="Quantity:" id="l4" />
+                <Input
+                    value=""
+                    id="QuantityId"
+                    width="1000px"
+                />
+            </HBox>
+            <HBox justifyContent="End" class="line">
+                <Label text="Order Date:" id="l5" />
+                <DatePicker
+					id="DateId"
+                    width="1000px"
+					value="{
+						'path':'/valueDP2',
+						'type':'sap.ui.model.type.Date',
+						'formatOptions': {
+							'pattern': 'yyyy-MM-dd'
+						}
+					}"
+					change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+            </HBox>
+            <HBox justifyContent="End" class="line">
+                <Label text="Need Urgent?:" id="l6" />
+                <Select forceSelection="false" id="UrgentId" width="1000px">
+					<core:Item text="Yes" key="Yes" id="i1"/>
+                    <core:Item text="No" key="No" id="i2"/>
+				</Select>
+            </HBox>
+            <HBox  class="line">
+                <Label text="Requirement For?:" id="l7" />
+                <RadioButtonGroup id="GroupA" columns="5">
+                    <RadioButton text="Mumbai Warehouse" selected="false" id="WarehouseId"/>
+                    <RadioButton text="Mumbai Retail Store" id="StoreId" />
+		        </RadioButtonGroup>
+            </HBox>
+            </VBox>
+            </FlexBox>
+            <HBox  class="addCancel">
+                <Button
+                    text="Add"
+                    type="Accept"
+                    icon="sap-icon://add"
+                    press="onAddButton"
+                    id="save"
+                />
+
+                <Button
+                    text="Cancel"
+                    press="onCancel"
+                    icon="sap-icon://cancel"
+                    type="Reject"
+                    id="cancel"
+                />
+                </HBox>
+                <FlexBox justifyContent="SpaceBetween" class="tablePadding">
+                <Label text="" id="l8" class="largeLabel"/>     
+                <Button
+                    text="Delete"
+                    icon="sap-icon://delete"
+                    type="Transparent"
+                    press="onDelete"
+                    id="delete"
+                />
+                </FlexBox>
+                
+<!-- Aggregation Binding -->
+            <Table items="{mylocaljsonModel>/}"
+            id="t1"
+            mode="SingleSelectLeft"
+            class="tablePadding">
+                <columns>
+                    <Column id="c1">
+                        <Text text="Product" id="txt1" />
+                    </Column>
+                    <Column id="c2">
+                        <Text text="Id" id="txt2" />
+                    </Column>
+                    <Column id="c3">
+                        <Text text="Quantity" id="txt3" />
+                    </Column>
+                    <Column id="c4">
+                        <Text text="Supplier" id="txt4" />
+                    </Column>
+                    <Column id="c5">
+                        <Text text="Order Date" id="txt5" />
+                    </Column>
+                    <Column id="c6">
+                        <Text text="Need Urgent" id="txt6" />
+                    </Column>
+                    <Column id="c7">
+                        <Text text="Store/Warehouse" id="txt7" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1" vAlign="Middle">
+                        <cells>
+                            <Text text="{mylocaljsonModel>Product}" />
+                            <Text text="{mylocaljsonModel>ProductId}" />
+                            <Text text="{mylocaljsonModel>Quantity}" />
+                            <Text text="{mylocaljsonModel>Supplier}" />
+                            <Text text="{mylocaljsonModel>OrderDate}" />
+                            <Text text="{mylocaljsonModel>NeedUrgent}" />
+                            <Text text="{mylocaljsonModel>StoreWarehouse}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

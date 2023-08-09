@@ -1,0 +1,20 @@
+/* Enter your custom styles here */
+.addCancel {
+    gap: 30px;
+    padding-left: 10px;
+    padding-bottom: 30px;
+}
+
+.tablePadding {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.line {
+	gap: 10px;
+    padding-right: 10px;
+}
+
+.largeLabel {
+    font-size: 20px;
+}
